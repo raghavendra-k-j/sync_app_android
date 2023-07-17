@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="primary">#2196F3</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="onPrimaryMedium">#CCFFFFFF</color>
+    <color name="onPrimaryLight">#99FFFFFF</color>
+
+    <color name="primaryDark">#0D47A1</color>
+    <color name="onPrimaryDark">#FFFFFF</color>
+    <color name="onPrimaryDarkMedium">#CCFFFFFF</color>
+    <color name="onPrimaryDarkLight">#99FFFFFF</color>
+
+    <color name="accent">#00BFA5</color>
+    <color name="onAccentDark">#FFFFFF</color>
+    <color name="onAccentDarkMedium">#CCFFFFFF</color>
+    <color name="onAccentDarkLight">#99FFFFFF</color>
+
+    <color name="background">#ECEFF1</color>
+    <color name="onBackground">#FF000000</color>
+    <color name="onBackgroundMedium">#B3000000</color>
+    <color name="onBackgroundLight">#80000000</color>
+    <color name="onBackgroundStroke">#E1E1E1</color>
+
+    <color name="strokeBetweenSurfaceAndBackground">#F1F1F1</color>
+
+    <color name="surface">#FFFFFF</color>
+    <color name="onSurface">#FF000000</color>
+    <color name="onSurfaceMedium">#B3000000</color>
+    <color name="onSurfaceLight">#80000000</color>
+    <color name="onSurfaceStroke">#F1F1F1</color>
+
+    <color name="onSurfaceEditTextBackground">#F1F1F1</color>
+    <color name="onSurfaceEditTextColor">@color/onSurface</color>
+    <color name="onSurfaceEditTextLabelColor">@color/onSurface</color>
+    <color name="onSurfaceEditTextHintColor">@color/onSurfaceLight</color>
+
+</resources>

@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
-import com.example.syncapp.util.CryptoSystem;
 import com.example.syncapp.util.LogHelper;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -16,7 +15,6 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.security.NoSuchAlgorithmException;
 
 @DatabaseTable(tableName = "myPictures")
 public class MyPicture {
@@ -78,14 +76,15 @@ public class MyPicture {
         try {
             jsonObject.put("citizenshipId", this.citizenshipId);
             jsonObject.put("fileName", this.fileName);
-            File file = new File(context.getFilesDir(), "myPictures/" + fileName);
-            if (file.exists()) {
-                String encodedBitmap = Base64.encodeToString(CryptoSystem.encryptAES(file, CryptoSystem.getAESKey()), Base64.DEFAULT);
+            if (this.bitmap != null) {
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                this.bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] byteArray = byteArrayOutputStream.toByteArray();
+                String encodedBitmap = Base64.encodeToString(byteArray, Base64.DEFAULT);
                 jsonObject.put("file", encodedBitmap);
             }
-        } catch (JSONException | NoSuchAlgorithmException e) {
+        } catch (JSONException e) {
             Log.e(LogHelper.tag(this), "toJSONObject: " + e.getMessage());
-            throw new RuntimeException(e);
         }
         return jsonObject;
     }

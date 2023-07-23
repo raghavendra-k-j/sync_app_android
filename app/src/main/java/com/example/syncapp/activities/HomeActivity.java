@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +16,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.example.syncapp.R;
 import com.example.syncapp.activities.books.BooksActivity;
+import com.example.syncapp.activities.mypictures.MyPicturesActivity;
 import com.example.syncapp.activities.syncsummary.SyncSummaryActivity;
 import com.example.syncapp.auth.Auth;
 import com.example.syncapp.database.DatabaseMethods;
@@ -25,7 +25,11 @@ import com.example.syncapp.databinding.ActivityHomeBinding;
 import java.io.IOException;
 import java.text.MessageFormat;
 
+
+
 public class HomeActivity extends AppCompatActivity {
+
+
 
     private ActivityHomeBinding binding;
     private Auth auth;
@@ -39,6 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         auth = new Auth(this);
         databaseMethods = new DatabaseMethods(this);
@@ -65,8 +71,8 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(this, BooksActivity.class));
         });
 
-        binding.homeNotesButton.setOnClickListener(v -> {
-            Toast.makeText(this, "TODO: Notes", Toast.LENGTH_SHORT).show();
+        binding.homeMyPicturesButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, MyPicturesActivity.class));
         });
 
 

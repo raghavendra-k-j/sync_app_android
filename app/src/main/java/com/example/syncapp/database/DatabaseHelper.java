@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.syncapp.entity.Book;
+import com.example.syncapp.entity.MyPicture;
 import com.example.syncapp.entity.Transaction;
 import com.example.syncapp.util.LogHelper;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -22,8 +23,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public static final int DB_VERSION = 1;
 
     private RuntimeExceptionDao<Transaction, Integer> transactionDao;
-
     private RuntimeExceptionDao<Book, String> bookDao;
+
+    private RuntimeExceptionDao<MyPicture, String> myPictureDao;
 
 
     public DatabaseHelper(Context context) {
@@ -35,6 +37,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, Transaction.class);
             TableUtils.createTable(connectionSource, Book.class);
+            TableUtils.createTable(connectionSource, MyPicture.class);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -45,6 +48,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.dropTable(connectionSource, Transaction.class, false);
             TableUtils.dropTable(connectionSource, Book.class, false);
+            TableUtils.dropTable(connectionSource, MyPicture.class, false);
             onCreate(database, connectionSource);
         }
         catch (SQLException e) {
@@ -63,7 +67,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return transactionDao;
     }
 
-
+    public RuntimeExceptionDao<MyPicture, String> getMyPictureDao() {
+        if(myPictureDao == null) myPictureDao = getRuntimeExceptionDao(MyPicture.class);
+        return myPictureDao;
+    }
 
     @Override
     public void close() {
